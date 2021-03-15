@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-ll n, a[101], x[101], k, check;
+ll n, a[101], x[101], k;
 vector<vector<ll>> res;
 
 void nhap()
@@ -15,7 +15,7 @@ void nhap()
  res.clear();
 }
 
-void in()
+void solve()
 {
  ll sum = 0;
  for (int i = 1; i <= n; i++)
@@ -37,9 +37,8 @@ void Try(int i)
  for (int j = 1; j >= 0; j--)
  {
 		x[i] = j;
-		//		ll sum = sum + a[i]*x[i];
 		if (i == n)
-			in();
+			solve();
 		else
 			Try(i + 1);
  }

@@ -1,63 +1,70 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-ll a[101][101], n;
-vector<string> kq;
-bool check = false;
+ll n, a[101], x[101], k;
+vector<vector<ll>> res;
 
 void nhap()
 {
-    cin >> n;
+    cin >> n >> k;
     for (int i = 1; i <= n; i++)
     {
-        for (int j = 1; j <= n; j++)
-        {
-            cin >> a[i][j];
-        }
+        cin >> a[i];
     }
-    kq.clear();
-    check = false;
+    sort(a + 1, a + n + 1);
+    res.clear();
 }
 
-void Try(int i, int j, string s)
+void solve()
 {
-    if (a[1][1] == 0)
+    ll sum = 0;
+    for (int i = 1; i <= n; i++)
+        sum += a[i] * x[i];
+    if (sum == k)
     {
-        check = false;
-        return;
+        vector<ll> tmp;
+        for (int i = 1; i <= n; i++)
+        {
+            if (x[i] == 1)
+                tmp.push_back(a[i]);
+        }
+        res.push_back(tmp);
     }
-    if (i == n && j == n && a[i][j] == 1)
+}
+
+void Try(int i)
+{
+    for (int j = 1; j >= 0; j--)
     {
-        kq.put_back(s);
-        check = true;
-        return;
-    }
-    if (i < n && a[i + 1][j] == 1)
-    {
-        Try(i + 1, j, s + "D")
-    }
-    if (j < n && a[i][j + 1] == 1)
-    {
-        Try(i, j + 1, s + "R")
+        x[i] = j;
+        if (i == n)
+            solve();
+        else
+            Try(i + 1);
     }
 }
 
 main()
 {
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
         nhap();
-        Try(1, 1, "");
-        if (check == false)
-            cout << -1;
+        Try(1);
+        if (res.size() == 0)
+            cout << "-1";
         else
         {
-            sort(kq.begin(), kq.end());
-            for (int i = 0; i < kq.size(); i++)
+            sort(res.begin(), res.end());
+            for (int i = 0; i < res.size(); i++)
             {
-                cout << kq[i] << ' ';
+                cout << "[";
+                for (int j = 0; j < res[i].size() - 1; j++)
+                {
+                    cout << res[i][j] << " ";
+                }
+                cout << res[i][res[i].size() - 1] << "] ";
             }
         }
         cout << endl;
