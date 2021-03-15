@@ -10,9 +10,9 @@ struct so
 bool compare(so a, so b)
 {
  if (a.dem > b.dem)
-		return true;
+		return true; // ko doi
  if (a.dem == b.dem && a.gtri < b.gtri)
-		return true;
+		return true; // ko doi
  return false;
 }
 main()
