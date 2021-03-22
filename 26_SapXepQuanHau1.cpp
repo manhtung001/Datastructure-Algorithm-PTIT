@@ -1,37 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-int n, dem, xuoi[51], nguoc[51], cot[21], x[101];
+int n, res;
+
+bool h[11], c[11], nguoc[22], xuoi[22];
 
 void reset()
 {
  for (int i = 1; i <= n; i++)
-		cot[i] = true;
+ {
+		c[i] = false;
+		h[i] = false;
+ }
  for (int i = 1; i <= 2 * n; i++)
  {
-		xuoi[i] = true;
-		nguoc[i] = true;
+		xuoi[i] = false;
+		nguoc[i] = false;
  }
- dem = 0;
+ res = 0;
 }
 
 void Try(int i)
 {
  for (int j = 1; j <= n; j++)
  {
-		if (cot[j] && xuoi[i - j + n] && nguoc[i + j - 1])
+		if (!h[j] && !c[j] && !xuoi[i - j + n] && !nguoc[i + j - 1])
 		{
-			// x[i] = j;
-			cot[j] = false;
-			xuoi[i - j + n] = false;
-			nguoc[i + j - 1] = false;
+			h[j] = c[j] = xuoi[i - j + n] = nguoc[i + j - 1] = true;
 			if (i == n)
-				dem++;
+				res++;
 			else
 				Try(i + 1);
-			cot[j] = true;
-			xuoi[i - j + n] = true;
-			nguoc[i + j - 1] = true;
+			h[j] = c[j] = xuoi[i - j + n] = nguoc[i + j - 1] = false;
 		}
  }
 }
@@ -45,6 +45,6 @@ main()
 		cin >> n;
 		reset();
 		Try(1);
-		cout << dem << endl;
+		cout << res << endl;
  }
 }
