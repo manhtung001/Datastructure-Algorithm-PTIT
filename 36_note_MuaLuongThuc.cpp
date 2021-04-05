@@ -18,7 +18,7 @@ main()
 			cout << -1 << endl;
 		else
 		{
-			for (int i = 1; i <= s; i++)
+			` for (int i = 1; i <= s; i++)
 			{
 				if (i % 7 == 0)
 				{ // i la chu nhat
