@@ -12,6 +12,7 @@ main()
 		cin >> s;
 		ll n = s.size();
 		stack<ll> st;
+		st.push(-1);
 		ll res = 0;
 		for (ll i = 0; i < n; i++)
 		{
@@ -19,14 +20,15 @@ main()
 			{
 				st.push(i);
 			}
-			else if (s[i] == ')' && st.size() == 0)
-			{
-				res = 0;
-			}
-			else if (s[i] == ')' && st.size() > 0)
+			else
 			{
 				st.pop();
-				res += 2;
+				if (st.size() == 0)
+					st.push(i);
+				else
+				{
+					res = max(res, i - st.top());
+				}
 			}
 		}
 		cout << res << endl;
