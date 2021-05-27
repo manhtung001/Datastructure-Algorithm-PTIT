@@ -1,72 +1,78 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-ll n, a[101], x[101], k;
-vector<vector<ll>> res;
+vector<int> ke[1001];
+int V, E, vs[1001], e[1001], check;
 
-void nhap()
+void DFS(int u)
 {
-    cin >> n >> k;
-    for (int i = 1; i <= n; i++)
+  vs[u] = 1;
+  for (int i = 0; i < ke[u].size(); i++)
+  {
+    if (vs[ke[u][i]] == 0)
     {
-        cin >> a[i];
+      vs[ke[u][i]] = 1;
+      DFS(ke[u][i]);
     }
-    sort(a + 1, a + n + 1);
-    res.clear();
+  }
 }
 
-void solve()
+int LienThong()
 {
-    ll sum = 0;
-    for (int i = 1; i <= n; i++)
-        sum += a[i] * x[i];
-    if (sum == k)
-    {
-        vector<ll> tmp;
-        for (int i = 1; i <= n; i++)
-        {
-            if (x[i] == 1)
-                tmp.push_back(a[i]);
-        }
-        res.push_back(tmp);
-    }
+  for (int i = 0; i < 1001; i++)
+    vs[i] = 0;
+  DFS(1);
+  int dem = 0;
+  for (int i = 1; i <= V; i++)
+  {
+    if (vs[i] == 1)
+      dem++;
+  }
+  if (dem == V)
+    return 1;
+  else
+    return 0;
 }
 
-void Try(int i)
+int bac()
 {
-    for (int j = 1; j >= 0; j--)
-    {
-        x[i] = j;
-        if (i == n)
-            solve();
-        else
-            Try(i + 1);
-    }
+  int deg[1001], chan = 0, le = 0;
+  for (int i = 1; i <= V; i++)
+  {
+    deg[i] = ke[i].size();
+    if (deg[i] % 2 == 0)
+      chan++;
+    else
+      le++;
+  }
+  if (chan == V || le == 0)
+    return 2;
+  else if (le > 0 && le <= 2)
+    return 1;
+  return 0;
 }
 
 main()
 {
-    int t;
-    cin >> t;
-    while (t--)
+  int t;
+  cin >> t;
+  while (t--)
+  {
+    cin >> V >> E;
+    memset(ke, 0, sizeof(ke));
+    for (int i = 1; i <= E; i++)
     {
-        nhap();
-        Try(1);
-        if (res.size() == 0)
-            cout << "-1";
-        else
-        {
-            sort(res.begin(), res.end());
-            for (int i = 0; i < res.size(); i++)
-            {
-                cout << "[";
-                for (int j = 0; j < res[i].size() - 1; j++)
-                {
-                    cout << res[i][j] << " ";
-                }
-                cout << res[i][res[i].size() - 1] << "] ";
-            }
-        }
-        cout << endl;
+      int u, v;
+      cin >> u >> v;
+      ke[u].push_back(v);
+      ke[v].push_back(u);
     }
+    if (LienThong() == 1 && bac() == 2)
+      cout << "YES";
+    else
+    {
+      cout << "NO";
+    }
+    cout << endl;
+  }
 }
