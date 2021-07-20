@@ -4,10 +4,10 @@ typedef long long ll;
 
 main()
 {
- ll t;
- cin >> t;
- while (t--)
- {
+	ll t;
+	cin >> t;
+	while (t--)
+	{
 		ll n;
 		cin >> n;
 		queue<ll> q;
@@ -24,5 +24,5 @@ main()
 			q.push(10 * temp);
 			q.push(10 * temp + 9);
 		}
- }
+	}
 }

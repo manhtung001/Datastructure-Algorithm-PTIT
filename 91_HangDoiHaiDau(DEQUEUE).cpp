@@ -4,11 +4,11 @@ typedef long long ll;
 
 main()
 {
- deque<ll> q;
- int t;
- cin >> t;
- while (t--)
- {
+	deque<ll> q;
+	int t;
+	cin >> t;
+	while (t--)
+	{
 		string s;
 		cin >> s;
 		if (s == "PUSHFRONT")
@@ -47,5 +47,5 @@ main()
 			if (!q.empty())
 				q.pop_back();
 		}
- }
+	}
 }

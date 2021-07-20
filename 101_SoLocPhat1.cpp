@@ -4,10 +4,10 @@ typedef long long ll;
 
 main()
 {
- int t;
- cin >> t;
- while (t--)
- {
+	int t;
+	cin >> t;
+	while (t--)
+	{
 		ll n;
 		cin >> n;
 		queue<ll> q;
@@ -34,5 +34,5 @@ main()
 			ans.pop_back();
 		}
 		cout << endl;
- }
+	}
 }

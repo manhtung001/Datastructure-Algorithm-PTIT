@@ -4,10 +4,10 @@ typedef long long ll;
 
 main()
 {
- int t;
- cin >> t;
- while (t--)
- {
+	int t;
+	cin >> t;
+	while (t--)
+	{
 		priority_queue<ll> q; //giam dan
 		ll d[27] = {0};
 		string s;
@@ -39,5 +39,5 @@ main()
 			q.pop();
 		}
 		cout << res << endl;
- }
+	}
 }

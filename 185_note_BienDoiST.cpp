@@ -4,16 +4,16 @@ typedef long long ll;
 ll vs[1000001];
 struct So
 {
- int gtri;
- int dem;
+	int gtri;
+	int dem;
 };
 int BFS(int s, int t)
 {
- queue<So> q;
- q.push({s, 0});
- vs[s] = 1;
- while (!q.empty())
- {
+	queue<So> q;
+	q.push({s, 0});
+	vs[s] = 1;
+	while (!q.empty())
+	{
 		So u = q.front();
 		q.pop();
 		if (u.gtri == t)
@@ -30,18 +30,18 @@ int BFS(int s, int t)
 			q.push({u.gtri - 1, u.dem + 1});
 			vs[u.gtri - 1] = 1;
 		}
- }
+	}
 }
 main()
 {
- int T;
- cin >> T;
- while (T--)
- {
+	int T;
+	cin >> T;
+	while (T--)
+	{
 		ll s, t;
 		cin >> s >> t;
 		memset(vs, 0, sizeof(vs));
 		ll res = BFS(s, t);
 		cout << res << endl;
- }
+	}
 }

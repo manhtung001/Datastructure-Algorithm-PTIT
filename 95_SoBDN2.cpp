@@ -4,10 +4,10 @@ typedef long long ll;
 //giong bai 6
 main()
 {
- int t;
- cin >> t;
- while (t--)
- {
+	int t;
+	cin >> t;
+	while (t--)
+	{
 		ll n;
 		cin >> n;
 		queue<ll> q;
@@ -27,5 +27,5 @@ main()
 				q.push(temp * 10 + 1);
 			}
 		}
- }
+	}
 }

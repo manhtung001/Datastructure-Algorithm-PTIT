@@ -4,11 +4,11 @@ typedef long long ll;
 
 main()
 {
- queue<ll> q;
- ll t;
- cin >> t;
- while (t--)
- {
+	queue<ll> q;
+	ll t;
+	cin >> t;
+	while (t--)
+	{
 		string s;
 		cin >> s;
 		if (s == "PUSH")
@@ -29,5 +29,5 @@ main()
 			if (!q.empty())
 				q.pop();
 		}
- }
+	}
 }
