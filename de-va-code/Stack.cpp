@@ -1,966 +1,1269 @@
-D„y Ngo?c ?˙ng d‡i nh?t
-Cho m?t x‚u ch? g?m c·c kÌ t? ë(ë v‡ ë)í. M?t d„y ngo?c ?˙ng ???c ??nh ngh?a nh? sau:
--†††† X‚u r?ng l‡ 1 d„y ngo?c ?˙ng.
--†††† N?u A l‡ 1 d„y ngo?c ?˙ng thÏ (A) l‡ 1 d„y ngo?c ?˙ng.
--†††† N?u A v‡ B l‡ 2 d„y ngo?c ?˙ng thÏ AB l‡ 1 d„y ngo?c ?˙ng.
-Cho m?t x‚u S. Nhi?m v? c?a b?n l‡ h„y tÏm d„y ngo?c ?˙ng d‡i nh?t xu?t hi?n trong x‚u ?„ cho.
-Input:†DÚng ??u tiÍn l‡ s? l??ng b? test T (T ? 20).
-M?i test g?m m?t x‚u S cÛ ?? d‡i khÙng v??t qu· 105†kÌ t?.
-Output:††V?i m?i test in ra m?t s? nguyÍn l‡ ?? d‡i d„y ngo?c ?˙ng d‡i nh?t tÏm ???c.
-VÌ d?:
-Input:	Output
-3
-((()
-)()())
-()(()))))
-†	2
-4
-6
+DÔøΩy Ngo ? c ?ÔøΩng dÔøΩi nh ? t
+							  Cho m
+	? t xÔøΩu ch
+	? g
+	? m cÔøΩc kÔøΩ t
+	? ÔøΩ(ÔøΩ vÔøΩ ÔøΩ)ÔøΩ.M
+	? t dÔøΩy ngo
+	? c
+	?ÔøΩng
+	? ?															  ? c
+	?															  ? nh ngh
+	? a nh ? sau : -ÔøΩÔøΩÔøΩÔøΩ XÔøΩu r ? ng lÔøΩ 1 dÔøΩy ngo ? c ?ÔøΩng.-ÔøΩÔøΩÔøΩÔøΩ N ? u A lÔøΩ 1 dÔøΩy ngo ? c ?ÔøΩng thÔøΩ (A)lÔøΩ 1 dÔøΩy ngo ? c ?ÔøΩng.-ÔøΩÔøΩÔøΩÔøΩ N ? u A vÔøΩ B lÔøΩ 2 dÔøΩy ngo ? c ?ÔøΩng thÔøΩ AB lÔøΩ 1 dÔøΩy ngo ? c ?ÔøΩng.Cho m ? t xÔøΩu S.Nhi ? m v ? c ? a b ? n lÔøΩ hÔøΩy tÔøΩm dÔøΩy ngo ? c ?ÔøΩng dÔøΩi nh ? t xu ? t hi ? n trong xÔøΩu ?ÔøΩ cho.Input :ÔøΩDÔøΩng ? ? u tiÔøΩn lÔøΩ s ? l ? ? ng b ? test T(T ? 20).M ? i test g ? m m ? t xÔøΩu S cÔøΩ ? ? dÔøΩi khÔøΩng v ? ? t quÔøΩ 105ÔøΩkÔøΩ t ?.Output :ÔøΩÔøΩV ? i m ? i test in ra m ? t s ? nguyÔøΩn lÔøΩ ? ? dÔøΩi dÔøΩy ngo ? c ?ÔøΩng dÔøΩi nh ? t tÔøΩm ? ? ? c.VÔøΩ d ?: Input : Output 3((())()())()(()))))
+ÔøΩ 2 4 6
 
-
-#include<bits/stdc++.h>
-using namespace std;
+#include <bits/stdc++.h>
+		  using namespace std;
 typedef long long ll;
 
-main(){
+main()
+{
 	int t;
 	cin >> t;
-	while(t--){
+	while (t--)
+	{
 		string s;
 		cin >> s;
 		stack<int> st;
 		st.push(-1);
 		int res = 0;
-		for(int i = 0; i < s.size(); i++){
-			if(s[i] == '(') st.push(i);
-			else{
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (s[i] == '(')
+				st.push(i);
+			else
+			{
 				st.pop();
-				if(st.empty()) st.push(i);
-				else{
-					res = max(res, i-st.top());
+				if (st.empty())
+					st.push(i);
+				else
+				{
+					res = max(res, i - st.top());
 				}
 			}
 		}
 		cout << res << endl;
 	}
 }
-NG?N X?P 1
-B‡i l‡m t?t nh?t
-Cho m?t ng?n x?p c·c s? nguyÍn. C·c thao t·c g?m 3 l?nh: push, pop v‡ show. Trong ?Û thao t·c push kËm theo m?t gi· tr? c?n thÍm (khÙng qu· 1000). H„y vi?t ch??ng trÏnh ghi ra k?t qu? c?a c·c l?nh show.
-Input:†G?m nhi?u dÚng, m?i dÚng ch?a m?t l?nh push, pop ho?c show. Input ??m b?o s? l??ng ph?n t? trong stack khi nhi?u nh?t c?ng khÙng v??t qu· 200.
-Output:†Ghi ra m‡n hÏnh c·c ph?n t? ?ang cÛ trong stack theo th? t? l?u tr? m?i khi g?p l?nh show. C·c s? vi?t c·ch nhau ?˙ng m?t kho?ng tr?ng. N?u trong stack khÙng cÚn gÏ thÏ in ra dÚng ìemptyî
-VÌ d?:
-Input	Output
-push 3
-push 5
-show
-push 7
-show
-pop
-pop
-show	3 5
-3 5 7
-3
+NG ? N X ? P 1 BÔøΩi lÔøΩm t ? t nh ? t
+									  Cho m
+	? t ng
+	? n x
+	? p cÔøΩc s
+	? nguyÔøΩn.CÔøΩc thao tÔøΩc g
+	? m 3 l ? nh : push,
+	pop vÔøΩ show.Trong ?ÔøΩ thao tÔøΩc push kÔøΩm theo m ? t giÔøΩ tr ? c ? n thÔøΩm(khÔøΩng quÔøΩ 1000).HÔøΩy vi ? t ch ? ? ng trÔøΩnh ghi ra k ? t qu ? c ? a cÔøΩc l ? nh show.Input :ÔøΩG ? m nhi ? u dÔøΩng, m ? i dÔøΩng ch ? a m ? t l ? nh push, pop ho ? c show.Input ? ? m b ? o s ? l ? ? ng ph ? n t ? trong stack khi nhi ? u nh ? t c ? ng khÔøΩng v ? ? t quÔøΩ 200. Output :ÔøΩGhi ra mÔøΩn hÔøΩnh cÔøΩc ph ? n t ? ? ang cÔøΩ trong stack theo th ? t ? l ? u tr ? m ? i khi g ? p l ? nh show.CÔøΩc s ? vi ? t cÔøΩch nhau ?ÔøΩng m ? t kho ? ng tr ? ng.N ? u trong stack khÔøΩng cÔøΩn gÔøΩ thÔøΩ in ra dÔøΩng ÔøΩemptyÔøΩ VÔøΩ d ?: Input Output push 3 push 5 show push 7 show pop pop show 3 5 3 5 7 3
 
 #include <bits/stdc++.h>
-using namespace std;
+																																																																																																																																	using namespace std;
 int a[205], top = -1;
-void push(int n) {
+void push(int n)
+{
 	top++;
 	a[top] = n;
 }
-void pop() {
+void pop()
+{
 	top--;
 }
-void show() {
-	if(top >= 0) {
-		for(int i=0; i<=top; i++){
-			cout << a[i] <<" ";
+void show()
+{
+	if (top >= 0)
+	{
+		for (int i = 0; i <= top; i++)
+		{
+			cout << a[i] << " ";
 		}
 		cout << endl;
 	}
-	else {
+	else
+	{
 		cout << "empty" << endl;
 	}
 }
-int main() {
+int main()
+{
 	string s;
 	int n;
-	while(cin >> s){
-		if(s == "push"){
+	while (cin >> s)
+	{
+		if (s == "push")
+		{
 			cin >> n;
-			push(n);	
-		} 
-		else if(s == "pop") {
-			pop();		
+			push(n);
 		}
-		else if(s == "show") {
+		else if (s == "pop")
+		{
+			pop();
+		}
+		else if (s == "show")
+		{
 			show();
 		}
 	}
 }
-NG?N X?P 2
-B‡i l‡m t?t nh?t
-YÍu c?u b?n x‚y d?ng m?t stack v?i c·c truy v?n sau ?‚y:
-ìPUSH xî: ThÍm ph?n t? x v‡o stack (0 ? x ? 1000).
-ìPRINTî: In ra ph?n t? ??u tiÍn c?a stack. N?u stack r?ng, in ra ìNONEî.
-ìPOPî: XÛa ph?n t? ??u tiÍn c?a stack. N?u stack r?ng, khÙng l‡m gÏ c?.
-Input:
-DÚng ??u tiÍn l‡ s? l??ng truy v?n Q (Q ? 100000).
-M?i truy v?n cÛ d?ng nh? trÍn.
-Output:†
-V?i m?i truy v?n ìPRINTî, h„y in ra ph?n t? ??u tiÍn c?a stack. N?u stack r?ng, in ra ìNONEî.
-VÌ d?:
-Input:	Output
-9
-PUSH 1
-PUSH 2
-POP
-PRINT
-PUSH 3
-PRINT
-POP
-POP
-PRINT
-†	1
-3
-NONE
-†
-#include<bits/stdc++.h>
-using namespace std;
-int main(){
-	int T; cin >> T;
+NG ? N X ? P 2 BÔøΩi lÔøΩm t ? t nh ? t
+									  YÔøΩu c
+	? u b
+	? n xÔøΩy d
+	? ng m
+	? t stack v
+	? i cÔøΩc truy v ? n sau ?ÔøΩy :
+ÔøΩPUSH xÔøΩ: ThÔøΩm ph ? n t ? x vÔøΩo stack(0 ? x ? 1000).
+ÔøΩPRINTÔøΩ: In ra ph ? n t ? ? ? u tiÔøΩn c ? a stack.N ? u stack r ? ng, in ra ÔøΩNONEÔøΩ.
+ÔøΩPOPÔøΩ: XÔøΩa ph ? n t ? ? ? u tiÔøΩn c ? a stack.N ? u stack r ? ng, khÔøΩng lÔøΩm gÔøΩ c ?.Input : DÔøΩng ? ? u tiÔøΩn lÔøΩ s ? l ? ? ng truy v ? n Q(Q ? 100000).M ? i truy v ? n cÔøΩ d ? ng nh ? trÔøΩn.Output :ÔøΩ V ? i m ? i truy v ? n ÔøΩPRINTÔøΩ, hÔøΩy in ra ph ? n t ? ? ? u tiÔøΩn c ? a stack.N ? u stack r ? ng, in ra ÔøΩNONEÔøΩ.VÔøΩ d ?: Input : Output 9 PUSH 1 PUSH 2 POP PRINT PUSH 3 PRINT POP POP PRINT
+ÔøΩ 1 3 NONE
+ÔøΩ
+#include <bits/stdc++.h>
+																																		using namespace std;
+int main()
+{
+	int T;
+	cin >> T;
 	stack<int> S;
-	string str; int n;
-	while (T--){
+	string str;
+	int n;
+	while (T--)
+	{
 		cin >> str;
-		if (str == "PUSH"){
+		if (str == "PUSH")
+		{
 			cin >> n;
 			S.push(n);
 		}
-		else if (str == "PRINT"){
-			if (S.empty()) cout << "NONE" << endl;
-			else cout << S.top() << endl;
-		}
-		else if (str == "POP"){
-			if (!S.empty()) S.pop();
-		}
-	}
-}
-†KI?M TRA BI?U TH?C S? H?C
-B‡i l‡m t?t nh?t
-Cho bi?u th?c s? h?c, h„y cho bi?t bi?u th?c s? h?c cÛ d? th?a c·c c?p k˝ hi?u ë(í,í) ë hay khÙng?
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c ti?n t? exp.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?20.
-VÌ d?:
-†
-Input	Output
-3
-((a+b))
-(a + (b)/c)
-(a + b*(c-d))	Yes
-Yes
-No
-
-#include<bits/stdc++.h>
-using namespace std;
-bool solve(string &str){
-	stack<char> s;
-	for (int i=0; i<str.length(); i++){
-		if (str[i] == ')'){
-			char top = s.top();
-			s.pop();
-			bool flag = true;
-			while (top != '('){
-				if (top=='+' || top=='-' || top=='*' || top=='/')
-					flag = false;
-				top = s.top();
-				s.pop();
-			}
-			if (flag == true)
-				return true;
-		}
-		else
-			s.push(str[i]);
-	}
-	return false;
-}
-int main(){
-	int T; cin >> T;
-	while (T--){
-		string s; cin >> s;
-		bool ans = solve(s);
-		if (ans == true) cout << "Yes" << endl;
-		else cout << "No" << endl;
-	}
-}
-†??M S? D?U NGO?C ??I CHI?U
-B‡i l‡m t?t nh?t
-Cho m?t x‚u ch? g?m c·c kÌ t? ë(ë, ë) v‡ cÛ ?? d‡i ch?n. H„y ??m s? l??ng d?u ngo?c c?n ph?i ??i chi?u Ìt nh?t, sao cho x‚u m?i thu ???c l‡ m?t d„y ngo?c ?˙ng.
-Input:
-DÚng ??u tiÍn l‡ s? l??ng b? test T (T ? 20).
-M?i test g?m 1 x‚u S cÛ ?? d‡i khÙng v??t qu· 100 000, ch? g?m d?u ( v‡ ).
-Output:†
-V?i m?i test, in ra ?·p ·n tÏm ???c trÍn m?t dÚng.
-VÌ d?:
-Input:	Output
-4
-))((
-((((
-(((())
-)(())(((	2
-2
-1
-3
-
-#include<bits/stdc++.h>
-using namespace std;
-void solve(string str){
-	stack<char> s;
-	for (int i=0; i<str.length(); i++){
-		if (str[i]==')' && !s.empty()){
-			if (s.top() == '(')
-				s.pop();
+		else if (str == "PRINT")
+		{
+			if (S.empty())
+				cout << "NONE" << endl;
 			else
-				s.push(str[i]);
+				cout << S.top() << endl;
 		}
-		else
-			s.push(str[i]);
-	}
-	int m = s.size();
-	int n = 0;
-	while (!s.empty() && s.top() == '('){
-		s.pop();
-		n++;
-	}
-	int res = m/2+n%2;
-	cout << res << endl;
-}
-int main(){
-	int T; cin >> T;
-	while (T--){
-		string str; cin >> str;
-		solve(str);
-	}
-}
-BI?N ??I TI?N T? - TRUNG T?
-B‡i l‡m t?t nh?t
-H„y vi?t ch??ng trÏnh chuy?n ??i bi?u th?c bi?u di?n d??i d?ng ti?n t? v? d?ng trung t?.
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c ti?n t? exp.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?106.
-VÌ d?:
-Input	Output
-2
-*+AB-CD
-*-A/BC-/AKL	((A+B)*(C-D))
-((A-(B/C))*((A/K)-L)
-
-#include<bits/stdc++.h>
-using namespace std;
-bool isOperator(char c){
-	if (c == '*' || c == '/' || c == '+' || c == '-')
-		return true;
-	return false;
-}
-void solve(string str){
-	stack<string> s;
-	for (int i = str.length()-1; i >= 0; i--){
-		if (isOperator(str[i])){
-			string str1 = s.top(); s.pop();
-			string str2 = s.top(); s.pop();
-			string tmp = "(" + str1 + str[i] + str2 + ")";
-			s.push(tmp);
-		}
-		else
-			s.push(string(1, str[i]));
-	}
-	cout << s.top() << endl;
-}
-int main() { 
-    int t; cin >> t;
-    while (t--){
-    	string s; cin >> s;
-    	solve(s);
-	}
-}
-†BI?N ??I TI?N T? - H?U T?
-B‡i l‡m t?t nh?t
-†† H„y vi?t ch??ng trÏnh chuy?n ??i bi?u th?c bi?u di?n d??i d?ng ti?n t? v? d?ng h?u t?.
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c ti?n t? exp.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?106.
-VÌ d?:
-Input	Output
-2
-*+AB-CD
-*-A/BC-/AKL	AB+CD-*
-ABC/-AK/L-*
-†
-#include<bits/stdc++.h>
-using namespace std; 
-bool isOperator(char c){
-	if (c == '*' || c == '/' || c == '+' || c == '-')
-		return true;
-	return false;
-}
-void solve(string str) { 
-  stack<string> s; 
-  int length = str.size(); 
-  for (int i = length - 1; i >= 0; i--) { 
-    if (isOperator(str[i])) { 
-      string op1 = s.top(); s.pop(); 
-      string op2 = s.top(); s.pop(); 
-      string temp = op1 + op2 + str[i];  
-      s.push(temp); 
-    } 
-    else { 
-      s.push(string(1, str[i])); 
-    } 
-  } 
-  cout << s.top() << endl; 
-} 
-int main() { 
-    int t; cin >> t;
-    cin.ignore();
-    while (t--){
-    	string s; getline(cin,s);
-    	solve(s);
-	}
-}
-H„y vi?t ch??ng trÏnh chuy?n tÌnh to·n gi· tr? c?a bi?u th?c h?u t?.
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c h?u t? exp. C·c s? xu?t hi?n trong bi?u th?c l‡ c·c s? ??n cÛ 1 ch? s?.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng, ch? l?y gi· tr? ph?n nguyÍn.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?20.
-VÌ d?:
-Input	Output
-2
-231*+9ñ
-875*+9-	-4
-34
-†
-#include<bits/stdc++.h>
-using namespace std;
-bool isOperator(char c){
-	if (c == '*' || c == '/' || c == '+' || c == '-')
-		return true;
-	return false;
-}
-void solve(string str){
-	stack<int> s;
-	for (int i = 0; i < str.length(); i++){
-		if (isOperator(str[i])){
-			int x1 = s.top(); s.pop();
-			int x2 = s.top(); s.pop();
-			switch (str[i]){
-				case '+': s.push(x2 + x1); break;
-				case '-': s.push(x2 - x1); break;
-				case '*': s.push(x2 * x1); break;
-				case '/': s.push(x2 / x1); break;
-			}
-		}
-		else{
-			s.push(str[i] - '0');
+		else if (str == "POP")
+		{
+			if (!S.empty())
+				S.pop();
 		}
 	}
-	cout << s.top() << endl;
 }
-int main() { 
-    int t; cin >> t;
-    cin.ignore();
-    while (t--){
-    	string s; getline(cin,s);
-    	solve(s);
-	}
-}
-†TÕNH GI¡ TR? BI?U TH?C TI?N T?
-B‡i l‡m t?t nh?t
-H„y vi?t ch??ng trÏnh tÌnh to·n gi· tr? c?a bi?u th?c ti?n t?.
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c ti?n t? exp. C·c s? xu?t hi?n trong bi?u th?c l‡ c·c s? ??n cÛ 1 ch? s?.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng, ch? l?y gi· tr? ph?n nguyÍn.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?20.
-VÌ d?:
-Input	Output
-2
--+8/632
--+7*45+20	8
-25
-†
-#include<bits/stdc++.h>
-using namespace std;
-bool isOperator(char c){
-	if (c == '*' || c == '/' || c == '+' || c == '-')
-		return true;
-	return false;
-}
-void solve(string str){
-	stack<int> s;
-	for (int i = str.length()-1; i >=0; i--){
-		if (isOperator(str[i])){
-			int x1 = s.top(); s.pop();
-			int x2 = s.top(); s.pop();
-			switch (str[i]){
-				case '+': s.push(x1 + x2); break;
-				case '-': s.push(x1 - x2); break;
-				case '*': s.push(x1 * x2); break;
-				case '/': s.push(x1 / x2); break;
-			}
-		}
-		else{
-			s.push(str[i] - '0');
-		}
-	}
-	cout << s.top() << endl;
-}
-int main(){ 
-    int t; cin >> t;
-    cin.ignore();
-    while (t--){
-    	string s; getline(cin,s);
-    	solve(s);
-	}
-}
-PH?N T? B N PH?I ??U TI N L?N H?N
-B‡i l‡m t?t nh?t
-Cho d„y s? A[] g?m N ph?n t?. V?i m?i A[i], b?n c?n tÏm ph?n t? bÍn ph?i ??u tiÍn l?n h?n nÛ. N?u khÙng t?n t?i, in ra -1.
-Input:
-DÚng ??u tiÍn l‡ s? l??ng b? test T (T ? 20).
-M?i test b?t ??u b?i s? nguyÍn N (1 ? N ? 100000).
-DÚng ti?p theo g?m N s? nguyÍn A[i] (0 ? A[i] ? 109).
-Output:†
-V?i m?i test, in ra trÍn m?t dÚng N s? R[i], v?i R[i] l‡ gi· tr? ph?n t? ??u tiÍn l?n h?n A[i].
-VÌ d?
-Input	Output
-3
-4
-4 5 2 25
-3
-2 2 2
-4
-4 4 5 5	5 25 25 -1
--1 -1 -1
-5 5 -1 -1
-†
-#include<bits/stdc++.h>
-typedef long long ll;
-using namespace std;
-void solve(ll arr[], int n){
-	stack<ll> s;
-	ll ans[n];
-	for (int i = n-1; i >= 0; i--){
-		while (!s.empty() && arr[i] >= s.top())
-			s.pop();
-		if (s.empty())
-			ans[i] = -1;
-		else
-			ans[i] = s.top();
-		s.push(arr[i]);
-	}
-	for (int i = 0; i < n; i++)
-		cout << ans[i] << " ";
-	cout << endl;
-}
-int main(){
-	int t; cin >> t ;
-	while (t--){
-		int n; cin >> n;
-		ll *arr = new ll[n];
-		for (int i = 0; i < n; i++) cin >> arr[i];
-		solve(arr, n);
-		delete arr;
-	}
-}
-†HÃNH CH? NH?T L?N NH?T
-B‡i l‡m t?t nh?t
-Cho N c?t, m?i c?t cÛ chi?u cao b?ng H[i]. B?n h„y tÏm hÏnh ch? nh?t l?n nh?t b? che ph? b?i c·c c?t?
- 
-Input:
-DÚng ??u tiÍn l‡ s? l??ng b? test T (T ? 20).
-M?i test b?t ??u b?i s? nguyÍn N (N ? 100 000).
-DÚng ti?p theo g?m N s? nguyÍn H[i] (1 ? H[i] ? 109).
-Output:†
-V?i m?i test, in ra di?n tÌch hÏnh ch? nh?t l?n nh?t tÏm ???c.
-VÌ d?:
-Input	Output
-2
-7
-6 2 5 4 5 1 6
-3
-2 2 2
-†	12
-6
-#include<bits/stdc++.h>
-typedef long long ll;
-using namespace std;
-void solve(ll arr[], int n){
-	stack<int> s;
-	ll res = 0, tp, area;
-	int i = 0;
-	while (i < n){
-		if (s.empty() || arr[s.top()] < arr[i])
-			s.push(i++);
-		else{
-			tp = s.top(); s.pop();
-			area = arr[tp] * (s.empty()? i: i-s.top()-1);
-			if (area > res)
-				res = area;
-		}
-	}
-	while (!s.empty()){
-		tp = s.top(); s.pop();
-		area = arr[tp] * (s.empty()? i: i-s.top()-1);
-		if (area > res)
-			res = area;
-	}
-	cout << res << endl;
-}
-int main(){
-	int t; cin >> t ;
-	while (t--){
-		int n; cin >> n;
-		ll *arr = new ll[n];
-		for (int i = 0; i < n; i++) cin >> arr[i];
-		solve(arr, n);
-		delete arr;
-	}
-}
+ÔøΩKI						 ? M TRA BI ? U TH ? C S ? H ? C
+									  BÔøΩi lÔøΩm t
+	? t nh
+	? t
+		  Cho bi
+	? u th
+	? c s
+	? h
+	? c,
+	hÔøΩy cho bi			 ? t bi ? u th ? c s ? h ? c cÔøΩ d ? th ? a cÔøΩc c ? p kÔøΩ hi ? u ÔøΩ(ÔøΩ,ÔøΩ) ÔøΩ hay khÔøΩng ? Input :
+																										  ? DÔøΩng
+																						 ? ? u tiÔøΩn
+																						 ? ? a vÔøΩo s
+																						 ? l
+																						 ? ? ng b
+																						 ? test T;
+? Nh					 ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c ti ? n t ? exp.Output :
+																																  ? ? ? a ra k
+																																  ? t qu
+																																  ? m
+																																  ? i test theo t
+																																  ? ng dÔøΩng.RÔøΩng bu ? c :
+																																					? T,
+	exp th				 ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+2						 ? length(exp) ? 20. VÔøΩ d ?:
+ÔøΩ Input Output
+						 3((a + b))(a + (b) / c)(a + b * (c - d)) Yes
+						 Yes
+						 No
 
-BI?N ??I TRUNG T? - H?U T?
-B‡i l‡m t?t nh?t
-H„y vi?t ch??ng trÏnh chuy?n ??i bi?u th?c bi?u di?n d??i d?ng trung t? v? d?ng h?u t?.
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c ti?n t? exp.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?10.
-VÌ d?:
-Input	Output
-2
-(A+(B+C)
-((A*B)+C)	ABC++
-AB*C+
-†
-#include<bits/stdc++.h> 
-using namespace std; 
-int prec(char c){ 
-    if(c == '^') 
-    	return 3; 
-    else if(c == '*' || c == '/') 
-    	return 2; 
-    else if(c == '+' || c == '-') 
-    	return 1; 
-    else
-    	return -1; 
-} 
-void solve(string s){ 
-    stack<char> st; 
-    int l = s.length(); 
-    string ns; 
-    for(int i = 0; i < l; i++) 
-    { 
-        if((s[i] >= 'a' && s[i] <= 'z')||(s[i] >= 'A' && s[i] <= 'Z')) 
-        	ns+=s[i]; 
-        else if(s[i] == '(') 
-          st.push('('); 
-        else if(s[i] == ')') 
-        { 
-            while(!st.empty() && st.top() != '(') 
-            { 
-                char c = st.top(); 
-                st.pop(); 
-                ns += c; 
-            } 
-            if(st.top() == '(') 
-                st.pop(); 
-        } 
-        else{ 
-            while(!st.empty() && prec(s[i]) <= prec(st.top())) 
-            { 
-                char c = st.top(); 
-                st.pop(); 
-                ns += c; 
-            } 
-            st.push(s[i]); 
-        } 
-    } 
-    while(!st.empty()) 
-    { 
-        char c = st.top(); 
-        st.pop();
-		if (c != '(') 
-        	ns += c; 
-    } 
-    cout << ns << endl; 
-} 
-int main() { 
-    int t; cin >> t;
-    cin.ignore();
-    while (t--){
-    	string s; cin >> s;
-    	solve(s);
-	}
-	return 0;
+#include <bits/stdc++.h>
+						 using namespace std;
+bool solve(string &str)
+{
+	   stack<char> s;
+	   for (int i = 0; i < str.length(); i++)
+	   {
+		   if (str[i] == ')')
+		   {
+			   char top = s.top();
+			   s.pop();
+			   bool flag = true;
+			   while (top != '(')
+			   {
+				   if (top == '+' || top == '-' || top == '*' || top == '/')
+					   flag = false;
+				   top = s.top();
+				   s.pop();
+			   }
+			   if (flag == true)
+				   return true;
+		   }
+		   else
+			   s.push(str[i]);
+	   }
+	   return false;
 }
-
-BI?N ??I H?U T? - TI?N T?
-B‡i l‡m t?t nh?t
-H„y vi?t ch??ng trÏnh chuy?n ??i bi?u th?c bi?u di?n d??i d?ng h?u t? v? d?ng ti?n t?.
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c ti?n t? exp.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?106.
-VÌ† d?:
-Input	Output
-2
-AB+CD-*
-ABC/-AK/L-*	*+AB-CD
-*-A/BC-/AKL
-
-
-#include<bits/stdc++.h>
-using namespace std;
-bool isOperator(char c){
-	if (c == '*' || c == '/' || c == '+' || c == '-')
-		return true;
-	return false;
+int main()
+{
+	   int T;
+	   cin >> T;
+	   while (T--)
+	   {
+		   string s;
+		   cin >> s;
+		   bool ans = solve(s);
+		   if (ans == true)
+			   cout << "Yes" << endl;
+		   else
+			   cout << "No" << endl;
+	   }
 }
-void solve(string str){
-	stack<string> s;
-	for (int i = 0; i < str.length(); i++){
-		if (isOperator(str[i])){
-			string str1 = s.top(); s.pop();
-			string str2 = s.top(); s.pop();
-			string tmp = str[i] + str2 + str1;
-			s.push(tmp);
-		}
-		else
-			s.push(string(1, str[i]));
-	}
-	cout << s.top() << endl;
-}
-int main() { 
-    int t; cin >> t;
-    cin.ignore();
-    while (t--){
-    	string s; getline(cin,s);
-    	solve(s);
-	}
-}
+ÔøΩ? ? M S ? D ? U NGO ? C ? ? I CHI ? U
+											BÔøΩi lÔøΩm t
+						   ? t nh
+						   ? t
+			 Cho m
+						   ? t xÔøΩu ch
+						   ? g
+						   ? m cÔøΩc kÔøΩ t
+						   ? ÔøΩ(ÔøΩ, ÔøΩ)vÔøΩ cÔøΩ
+						   ? ? dÔøΩi ch
+						   ? n.HÔøΩy
+						   ? ? m s
+						   ? l
+						   ? ? ng d
+						   ? u ngo
+						   ? c c
+						   ? n ph
+						   ? i
+						   ? ? i chi
+						   ? u ÔøΩt nh
+						   ? t,
+	   sao cho xÔøΩu m ? i thu ? ? ? c lÔøΩ m ? t dÔøΩy ngo ? c ?ÔøΩng.Input : DÔøΩng ? ? u tiÔøΩn lÔøΩ s ? l ? ? ng b ? test T(T ? 20).M ? i test g ? m 1 xÔøΩu S cÔøΩ ? ? dÔøΩi khÔøΩng v ? ? t quÔøΩ 100 000, ch ? g ? m d ? u(vÔøΩ ).Output :ÔøΩ V ? i m ? i test, in ra ?ÔøΩp ÔøΩn tÔøΩm ? ? ? c trÔøΩn m ? t dÔøΩng.VÔøΩ d ?: Input : Output 4))(((((((((()))(())(((
+																											   2 2 1 3
 
-†BI?N ??I H?U T? - TI?N T?
-B‡i l‡m t?t nh?t
-H„y vi?t ch??ng trÏnh chuy?n ??i bi?u th?c bi?u di?n d??i d?ng h?u t? v? d?ng ti?n t?.
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c ti?n t? exp.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?106.
-VÌ† d?:
-Input	Output
-2
-AB+CD-*
-ABC/-AK/L-*	*+AB-CD
-*-A/BC-/AKL
+#include <bits/stdc++.h>
+																											   using namespace std;
+																											   void solve(string str)
+																											   {
+																												   stack<char> s;
+																												   for (int i = 0; i < str.length(); i++)
+																												   {
+																													   if (str[i] == ')' && !s.empty())
+																													   {
+																														   if (s.top() == '(')
+																															   s.pop();
+																														   else
+																															   s.push(str[i]);
+																													   }
+																													   else
+																														   s.push(str[i]);
+																												   }
+																												   int m = s.size();
+																												   int n = 0;
+																												   while (!s.empty() && s.top() == '(')
+																												   {
+																													   s.pop();
+																													   n++;
+																												   }
+																												   int res = m / 2 + n % 2;
+																												   cout << res << endl;
+																											   } int main()
+																											   {
+																												   int T;
+																												   cin >> T;
+																												   while (T--)
+																												   {
+																													   string str;
+																													   cin >> str;
+																													   solve(str);
+																												   }
+																											   } BI
+																																   ? N
+																																   ? ? I TI
+																																   ? N T
+																																   ? -TRUNG T
+																																   ? BÔøΩi lÔøΩm t
+																																   ? t nh
+																																   ? t HÔøΩy vi
+																																   ? t ch
+																																   ? ? ng trÔøΩnh chuy
+																																   ? n
+																																   ? ? i bi
+																																   ? u th
+																																   ? c bi
+																																   ? u di
+																																   ? n d
+																																   ? ? i d
+																																   ? ng ti
+																																   ? n t
+																																   ? v
+																																   ? d
+																																   ? ng trung t ?.Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																   ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c ti ? n t ? exp.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.RÔøΩng bu ? c : ? T, exp th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																											   2 ? length(exp) ? 106. VÔøΩ d ?: Input Output 2 * +AB - CD * -A / BC - / AKL((A + B) * (C - D))((A - (B / C)) * ((A / K) - L)
 
-#include<bits/stdc++.h>
-using namespace std;
-bool isOperator(char c){
-	if (c == '*' || c == '/' || c == '+' || c == '-')
-		return true;
-	return false;
-}
-void solve(string str){
-	stack<string> s;
-	for (int i = 0; i < str.length(); i++){
-		if (isOperator(str[i])){
-			string str1 = s.top(); s.pop();
-			string str2 = s.top(); s.pop();
-			string tmp = str[i] + str2 + str1;
-			s.push(tmp);
-		}
-		else
-			s.push(string(1, str[i]));
-	}
-	cout << s.top() << endl;
-}
-int main() { 
-    int t; cin >> t;
-    cin.ignore();
-    while (t--){
-    	string s; getline(cin,s);
-    	solve(s);
-	}
-}
+#include <bits/stdc++.h>
+																																																								 using namespace std;
+																																																			 bool isOperator(char c)
+																																																			 {
+																																																				 if (c == '*' || c == '/' || c == '+' || c == '-')
+																																																					 return true;
+																																																				 return false;
+																																																			 } void solve(string str)
+																																																			 {
+																																																				 stack<string> s;
+																																																				 for (int i = str.length() - 1; i >= 0; i--)
+																																																				 {
+																																																					 if (isOperator(str[i]))
+																																																					 {
+																																																						 string str1 = s.top();
+																																																						 s.pop();
+																																																						 string str2 = s.top();
+																																																						 s.pop();
+																																																						 string tmp = "(" + str1 + str[i] + str2 + ")";
+																																																						 s.push(tmp);
+																																																					 }
+																																																					 else
+																																																						 s.push(string(1, str[i]));
+																																																				 }
+																																																				 cout << s.top() << endl;
+																																																			 } int main()
+																																																			 {
+																																																				 int t;
+																																																				 cin >> t;
+																																																				 while (t--)
+																																																				 {
+																																																					 string s;
+																																																					 cin >> s;
+																																																					 solve(s);
+																																																				 }
+																																																			 }
+ÔøΩBI
+																																																								 ? N
+																																																								 ? ? I TI
+																																																								 ? N T
+																																																								 ? -H
+																																																								 ? U T
+																																																								 ? BÔøΩi lÔøΩm t
+																																																								 ? t nh
+																																																								 ? t
+ÔøΩÔøΩ HÔøΩy vi
+																																																								 ? t ch
+																																																								 ? ? ng trÔøΩnh chuy
+																																																								 ? n
+																																																								 ? ? i bi
+																																																								 ? u th
+																																																								 ? c bi
+																																																								 ? u di
+																																																								 ? n d
+																																																								 ? ? i d
+																																																								 ? ng ti
+																																																								 ? n t
+																																																								 ? v
+																																																								 ? d
+																																																								 ? ng h
+																																																								 ? u t ?.Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																																								 ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c ti ? n t ? exp.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.RÔøΩng bu ? c : ? T, exp th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																			 2 ? length(exp) ? 106. VÔøΩ d ?: Input Output 2 * +AB - CD * -A / BC - / AKL AB + CD - *ABC / -AK / L - *
+ÔøΩ
+#include <bits/stdc++.h>
+																																																																												   using namespace std;
+																																																			 bool isOperator(char c)
+																																																			 {
+																																																				 if (c == '*' || c == '/' || c == '+' || c == '-')
+																																																					 return true;
+																																																				 return false;
+																																																			 } void solve(string str)
+																																																			 {
+																																																				 stack<string> s;
+																																																				 int length = str.size();
+																																																				 for (int i = length - 1; i >= 0; i--)
+																																																				 {
+																																																					 if (isOperator(str[i]))
+																																																					 {
+																																																						 string op1 = s.top();
+																																																						 s.pop();
+																																																						 string op2 = s.top();
+																																																						 s.pop();
+																																																						 string temp = op1 + op2 + str[i];
+																																																						 s.push(temp);
+																																																					 }
+																																																					 else
+																																																					 {
+																																																						 s.push(string(1, str[i]));
+																																																					 }
+																																																				 }
+																																																				 cout << s.top() << endl;
+																																																			 } int main()
+																																																			 {
+																																																				 int t;
+																																																				 cin >> t;
+																																																				 cin.ignore();
+																																																				 while (t--)
+																																																				 {
+																																																					 string s;
+																																																					 getline(cin, s);
+																																																					 solve(s);
+																																																				 }
+																																																			 } HÔøΩy vi
+																																																								 ? t ch
+																																																								 ? ? ng trÔøΩnh chuy
+																																																								 ? n tÔøΩnh toÔøΩn giÔøΩ tr
+																																																								 ? c
+																																																								 ? a bi
+																																																								 ? u th
+																																																								 ? c h
+																																																								 ? u t ?.Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																																								 ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c h ? u t ? exp.CÔøΩc s ? xu ? t hi ? n trong bi ? u th ? c lÔøΩ cÔøΩc s ? ? ? n cÔøΩ 1 ch ? s ?.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng, ch ? l ? y giÔøΩ tr ? ph ? n nguyÔøΩn.RÔøΩng bu ? c : ? T, exp th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																			 2 ? length(exp) ? 20. VÔøΩ d ?: Input Output 2 231 * +9ÔøΩ 875 * +9 - -4 34
+ÔøΩ
+#include <bits/stdc++.h>
+																																																																			   using namespace std;
+																																																			 bool isOperator(char c)
+																																																			 {
+																																																				 if (c == '*' || c == '/' || c == '+' || c == '-')
+																																																					 return true;
+																																																				 return false;
+																																																			 } void solve(string str)
+																																																			 {
+																																																				 stack<int> s;
+																																																				 for (int i = 0; i < str.length(); i++)
+																																																				 {
+																																																					 if (isOperator(str[i]))
+																																																					 {
+																																																						 int x1 = s.top();
+																																																						 s.pop();
+																																																						 int x2 = s.top();
+																																																						 s.pop();
+																																																						 switch (str[i])
+																																																						 {
+																																																						 case '+':
+																																																							 s.push(x2 + x1);
+																																																							 break;
+																																																						 case '-':
+																																																							 s.push(x2 - x1);
+																																																							 break;
+																																																						 case '*':
+																																																							 s.push(x2 * x1);
+																																																							 break;
+																																																						 case '/':
+																																																							 s.push(x2 / x1);
+																																																							 break;
+																																																						 }
+																																																					 }
+																																																					 else
+																																																					 {
+																																																						 s.push(str[i] - '0');
+																																																					 }
+																																																				 }
+																																																				 cout << s.top() << endl;
+																																																			 } int main()
+																																																			 {
+																																																				 int t;
+																																																				 cin >> t;
+																																																				 cin.ignore();
+																																																				 while (t--)
+																																																				 {
+																																																					 string s;
+																																																					 getline(cin, s);
+																																																					 solve(s);
+																																																				 }
+																																																			 }
+ÔøΩTÔøΩNH GIÔøΩ TR
+																																																								 ? BI
+																																																								 ? U TH
+																																																								 ? C TI
+																																																								 ? N T
+																																																								 ? BÔøΩi lÔøΩm t
+																																																								 ? t nh
+																																																								 ? t HÔøΩy vi
+																																																								 ? t ch
+																																																								 ? ? ng trÔøΩnh tÔøΩnh toÔøΩn giÔøΩ tr
+																																																								 ? c
+																																																								 ? a bi
+																																																								 ? u th
+																																																								 ? c ti
+																																																								 ? n t ?.Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																																								 ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c ti ? n t ? exp.CÔøΩc s ? xu ? t hi ? n trong bi ? u th ? c lÔøΩ cÔøΩc s ? ? ? n cÔøΩ 1 ch ? s ?.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng, ch ? l ? y giÔøΩ tr ? ph ? n nguyÔøΩn.RÔøΩng bu ? c : ? T, exp th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																			 2 ? length(exp) ? 20. VÔøΩ d ?: Input Output 2 - +8 / 632 - +7 * 45 + 20 8 25
+ÔøΩ
+#include <bits/stdc++.h>
+																																																											   using namespace std;
+																																																			 bool isOperator(char c)
+																																																			 {
+																																																				 if (c == '*' || c == '/' || c == '+' || c == '-')
+																																																					 return true;
+																																																				 return false;
+																																																			 } void solve(string str)
+																																																			 {
+																																																				 stack<int> s;
+																																																				 for (int i = str.length() - 1; i >= 0; i--)
+																																																				 {
+																																																					 if (isOperator(str[i]))
+																																																					 {
+																																																						 int x1 = s.top();
+																																																						 s.pop();
+																																																						 int x2 = s.top();
+																																																						 s.pop();
+																																																						 switch (str[i])
+																																																						 {
+																																																						 case '+':
+																																																							 s.push(x1 + x2);
+																																																							 break;
+																																																						 case '-':
+																																																							 s.push(x1 - x2);
+																																																							 break;
+																																																						 case '*':
+																																																							 s.push(x1 * x2);
+																																																							 break;
+																																																						 case '/':
+																																																							 s.push(x1 / x2);
+																																																							 break;
+																																																						 }
+																																																					 }
+																																																					 else
+																																																					 {
+																																																						 s.push(str[i] - '0');
+																																																					 }
+																																																				 }
+																																																				 cout << s.top() << endl;
+																																																			 } int main()
+																																																			 {
+																																																				 int t;
+																																																				 cin >> t;
+																																																				 cin.ignore();
+																																																				 while (t--)
+																																																				 {
+																																																					 string s;
+																																																					 getline(cin, s);
+																																																					 solve(s);
+																																																				 }
+																																																			 } PH
+																																																								 ? N T
+																																																								 ? BÔøΩN PH
+																																																								 ? I
+																																																								 ? ? U TIÔøΩN L
+																																																								 ? N H
+																																																								 ? N BÔøΩi lÔøΩm t
+																																																								 ? t nh
+																																																								 ? t Cho dÔøΩy s
+																																																								 ? A[] g
+																																																								 ? m N ph
+																																																								 ? n t
+																																																								 ?.V
+																																																								 ? i m
+																																																								 ? i A[i],
+																																																			 b ? n c ? n tÔøΩm ph ? n t ? bÔøΩn ph ? i ? ? u tiÔøΩn l ? n h ? n nÔøΩ.N ? u khÔøΩng t ? n t ? i, in ra - 1. Input : DÔøΩng ? ? u tiÔøΩn lÔøΩ s ? l ? ? ng b ? test T(T ? 20).M ? i test b ? t ? ? u b ? i s ? nguyÔøΩn N(1 ? N ? 100000).DÔøΩng ti ? p theo g ? m N s ? nguyÔøΩn A[i](0 ? A[i] ? 109).Output :ÔøΩ V ? i m ? i test, in ra trÔøΩn m ? t dÔøΩng N s ? R[i], v ? i R[i] lÔøΩ giÔøΩ tr ? ph ? n t ? ? ? u tiÔøΩn l ? n h ? n A[i].VÔøΩ d ? Input Output 3 4 4 5 2 25 3 2 2 2 4 4 4 5 5 5 25 25 - 1 - 1 - 1 - 1 5 5 - 1 - 1
+ÔøΩ
+#include <bits/stdc++.h>
+																																																																																																																																																									  typedef long long ll;
+																																																			 using namespace std; void solve(ll arr[], int n)
+																																																			 {
+																																																				 stack<ll> s;
+																																																				 ll ans[n];
+																																																				 for (int i = n - 1; i >= 0; i--)
+																																																				 {
+																																																					 while (!s.empty() && arr[i] >= s.top())
+																																																						 s.pop();
+																																																					 if (s.empty())
+																																																						 ans[i] = -1;
+																																																					 else
+																																																						 ans[i] = s.top();
+																																																					 s.push(arr[i]);
+																																																				 }
+																																																				 for (int i = 0; i < n; i++)
+																																																					 cout << ans[i] << " ";
+																																																				 cout << endl;
+																																																			 } int main()
+																																																			 {
+																																																				 int t;
+																																																				 cin >> t;
+																																																				 while (t--)
+																																																				 {
+																																																					 int n;
+																																																					 cin >> n;
+																																																					 ll *arr = new ll[n];
+																																																					 for (int i = 0; i < n; i++)
+																																																						 cin >> arr[i];
+																																																					 solve(arr, n);
+																																																					 delete arr;
+																																																				 }
+																																																			 }
 
-BI?N ??I H?U T? - TRUNG T?
-B‡i l‡m t?t nh?t
-H„y vi?t ch??ng trÏnh chuy?n ??i bi?u th?c bi?u di?n d??i d?ng h?u t? v? d?ng trung t?.
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t bi?u th?c ti?n t? exp.
-?	T, exp th?a m‡ng r‡ng bu?c: 1?T?100; 2?length(exp)?106.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, exp th?a m„n r‡ng bu?c: 1?T?100; 2?length(exp)?106.
-VÌ d?:
-Input	Output
-2
-ABC++
-AB*C+	(A+(B+C)
-((A*B)+C)
+// ƒê·∫¢O T·ª™
+// B√†i l√†m t·ªët nh·∫•t
+// Cho x√¢u k√Ω t·ª± S. Nhi·ªám v·ª• c·ªßa b·∫°n l√† ƒë·∫£o ng∆∞·ª£c c√°c t·ª´ trong S. V√≠ d·ª• S =  ‚ÄúI like this program very much‚Äù, ta nh·∫≠n ƒë∆∞·ª£c k·∫øt qu·∫£ l√† ‚Äúmuch very program this like I‚Äù.
+// Input:
+// ‚Ä¢	D√≤ng ƒë·∫ßu ti√™n ƒë∆∞a v√†o s·ªë l∆∞·ª£ng b·ªô test T.
+// ‚Ä¢	Nh·ªØng d√≤ng k·∫ø ti·∫øp ƒë∆∞a v√†o T b·ªô test. M·ªói b·ªô test l√† m·ªôt x√¢u k√Ω t·ª± S.
+// ‚Ä¢	T, S th·ªèa m√£n r√†ng bu·ªôc: 1‚â§ T ‚â§100; 1‚â§ Length(S)‚â§103.
+// Output:
+// ‚Ä¢	ƒê∆∞a ra k·∫øt qu·∫£ m·ªói test theo t·ª´ng d√≤ng.
+// V√≠ d·ª•:
+// Input:	Output:
+// 2
+// I like this program very much
+// much very program this like I	much very program this like I
+// I like this program very much
+
+#include <bits/stdc++.h>
+																																																			 using namespace std;
+																																																			 typedef long long ll;
+
+																																																			 int main()
+																																																			 {
+																																																				 int t;
+																																																				 cin >> t;
+																																																				 cin.ignore();
+																																																				 while (t--)
+																																																				 {
+																																																					 string s;
+																																																					 getline(cin, s);
+																																																					 stack<string> st;
+																																																					 string tmp = "";
+																																																					 for (ll i = 0; i < s.size(); i++)
+																																																					 {
+																																																						 if (s[i] == ' ')
+																																																						 {
+																																																							 tmp += " ";
+																																																							 st.push(tmp);
+																																																							 tmp = "";
+																																																						 }
+																																																						 else
+																																																						 {
+																																																							 tmp += s[i];
+																																																						 }
+																																																					 }
+																																																					 tmp += " ";
+																																																					 st.push(tmp);
+																																																					 while (!st.empty())
+																																																					 {
+																																																						 cout << st.top();
+																																																						 st.pop();
+																																																					 }
+																																																					 cout << endl;
+																																																				 }
+																																																			 }
 
 
-#include<bits/stdc++.h>
-using namespace std;
-bool isOperator(char c){
-	if (c == '*' || c == '/' || c == '+' || c == '-')
-		return true;
-	return false;
-}
-void solve(string str){
-	stack<string> s;
-	for (int i = 0; i < str.length(); i++){
-		if (isOperator(str[i])){
-			string str1 = s.top(); s.pop();
-			string str2 = s.top(); s.pop();
-			string tmp = "(" + str2 + str[i] + str1 + ")";
-			s.push(tmp);
-		}
-		else
-			s.push(string(1, str[i]));
-	}
-	cout << s.top() << endl;
-}
-int main() { 
-    int t; cin >> t;
-    cin.ignore();
-    while (t--){
-    	string s; getline(cin,s);
-    	solve(s);
-	}
-}
+ÔøΩHÔøΩNH CH
+																																																								 ? NH
+																																																								 ? T L
+																																																								 ? N NH
+																																																								 ? T BÔøΩi lÔøΩm t
+																																																								 ? t nh
+																																																								 ? t Cho N c
+																																																								 ? t,
+																																																			 m ? i c ? t cÔøΩ chi ? u cao b ? ng H[i].B ? n hÔøΩy tÔøΩm hÔøΩnh ch ? nh ? t l ? n nh ? t b ? che ph ? b ? i cÔøΩc c ? t ?
 
-BI?U TH?C T?NG GI?M
-B‡i l‡m t?t nh?t
-Cho d„y k˝ t? S ch? bao g?m c·c k˝ t? I ho?c D. K˝ t? I ???c hi?u l‡ t?ng (Increasing) k˝ t? D ???c hi?u l‡ gi?m (Decreasing). S? d?ng c·c s? t? 1 ??n 9, h„y ??a ra s? nh? nh?t ???c ?o·n nh?n t? S. Ch˙ ˝, c·c s? khÙng ???c phÈp l?p l?i. D??i ?‚y l‡ m?t s? vÌ d? m?u:
-?	A[] = ìIî †††††††††††† : s? t?ng nh? nh?t l‡ 12.
-?	A[] = ìDî††††††††††† : s? gi?m nh? nh?t l‡ 21
-?	A[] =îDDî†††††††††† : s? gi?m nh? nh?t l‡ 321
-?	A[] = ìDDIDDIIDî: s? th?a m„n 321654798
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T.
-?	Nh?ng dÚng k? ti?p ??a v‡o T b? test. M?i b? test l‡ m?t x‚u S
-?	T, S th?a m„n r‡ng bu?c: 1? T ?100; 1? length(S) ?8; .
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-VÌ d?:
-Input:	Output:
-4
-I
-D
-DD
-DDIDDIID	12
-21
-321
-321654798
+																																																																																				 Input
+																																																																																					 : DÔøΩng
+																																																																																				   ? ? u tiÔøΩn lÔøΩ s
+																																																																																				   ? l
+																																																																																				   ? ? ng b
+																																																																																				   ? test T(T ? 20).M
+																																																																																				   ? i test b
+																																																																																				   ? t
+																																																																																				   ? ? u b
+																																																																																				   ? i s
+																																																																																				   ? nguyÔøΩn N(N ? 100 000).DÔøΩng ti
+																																																																																				   ? p theo g
+																																																																																				   ? m N s
+																																																																																				   ? nguyÔøΩn H[i](1 ? H[i] ? 109).Output :ÔøΩ V ? i m ? i test, in ra di ? n tÔøΩch hÔøΩnh ch ? nh ? t l ? n nh ? t tÔøΩm ? ? ? c.VÔøΩ d ?: Input Output 2 7 6 2 5 4 5 1 6 3 2 2 2
+ÔøΩ 12 6
+#include <bits/stdc++.h>
+																																																																																																													   typedef long long ll;
+																																																																															   using namespace std; void solve(ll arr[], int n)
+																																																																															   {
+																																																																																   stack<int> s;
+																																																																																   ll res = 0, tp, area;
+																																																																																   int i = 0;
+																																																																																   while (i < n)
+																																																																																   {
+																																																																																	   if (s.empty() || arr[s.top()] < arr[i])
+																																																																																		   s.push(i++);
+																																																																																	   else
+																																																																																	   {
+																																																																																		   tp = s.top();
+																																																																																		   s.pop();
+																																																																																		   area = arr[tp] * (s.empty() ? i : i - s.top() - 1);
+																																																																																		   if (area > res)
+																																																																																			   res = area;
+																																																																																	   }
+																																																																																   }
+																																																																																   while (!s.empty())
+																																																																																   {
+																																																																																	   tp = s.top();
+																																																																																	   s.pop();
+																																																																																	   area = arr[tp] * (s.empty() ? i : i - s.top() - 1);
+																																																																																	   if (area > res)
+																																																																																		   res = area;
+																																																																																   }
+																																																																																   cout << res << endl;
+																																																																															   } int main()
+																																																																															   {
+																																																																																   int t;
+																																																																																   cin >> t;
+																																																																																   while (t--)
+																																																																																   {
+																																																																																	   int n;
+																																																																																	   cin >> n;
+																																																																																	   ll *arr = new ll[n];
+																																																																																	   for (int i = 0; i < n; i++)
+																																																																																		   cin >> arr[i];
+																																																																																	   solve(arr, n);
+																																																																																	   delete arr;
+																																																																																   }
+																																																																															   }
 
+																																																																															   BI
+																																																																																				   ? N
+																																																																																				   ? ? I TRUNG T
+																																																																																				   ? -H
+																																																																																				   ? U T
+																																																																																				   ? BÔøΩi lÔøΩm t
+																																																																																				   ? t nh
+																																																																																				   ? t HÔøΩy vi
+																																																																																				   ? t ch
+																																																																																				   ? ? ng trÔøΩnh chuy
+																																																																																				   ? n
+																																																																																				   ? ? i bi
+																																																																																				   ? u th
+																																																																																				   ? c bi
+																																																																																				   ? u di
+																																																																																				   ? n d
+																																																																																				   ? ? i d
+																																																																																				   ? ng trung t
+																																																																																				   ? v
+																																																																																				   ? d
+																																																																																				   ? ng h
+																																																																																				   ? u t ?.Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																																																																				   ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c ti ? n t ? exp.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.RÔøΩng bu ? c : ? T, exp th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																																															   2 ? length(exp) ? 10. VÔøΩ d ?: Input Output 2(
+																																																																																								 A + (B + C)((A * B) + C) ABC++ AB * C +
+ÔøΩ
+#include <bits/stdc++.h>
+																																																																																								 using namespace std;
+																																																																																								 int prec(char c)
+																																																																																								 {
+																																																																																									 if (c == '^')
+																																																																																										 return 3;
+																																																																																									 else if (c == '*' || c == '/')
+																																																																																										 return 2;
+																																																																																									 else if (c == '+' || c == '-')
+																																																																																										 return 1;
+																																																																																									 else
+																																																																																										 return -1;
+																																																																																								 } void solve(string s)
+																																																																																								 {
+																																																																																									 stack<char> st;
+																																																																																									 int l = s.length();
+																																																																																									 string ns;
+																																																																																									 for (int i = 0; i < l; i++)
+																																																																																									 {
+																																																																																										 if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+																																																																																											 ns += s[i];
+																																																																																										 else if (s[i] == '(')
+																																																																																											 st.push('(');
+																																																																																										 else if (s[i] == ')')
+																																																																																										 {
+																																																																																											 while (!st.empty() && st.top() != '(')
+																																																																																											 {
+																																																																																												 char c = st.top();
+																																																																																												 st.pop();
+																																																																																												 ns += c;
+																																																																																											 }
+																																																																																											 if (st.top() == '(')
+																																																																																												 st.pop();
+																																																																																										 }
+																																																																																										 else
+																																																																																										 {
+																																																																																											 while (!st.empty() && prec(s[i]) <= prec(st.top()))
+																																																																																											 {
+																																																																																												 char c = st.top();
+																																																																																												 st.pop();
+																																																																																												 ns += c;
+																																																																																											 }
+																																																																																											 st.push(s[i]);
+																																																																																										 }
+																																																																																									 }
+																																																																																									 while (!st.empty())
+																																																																																									 {
+																																																																																										 char c = st.top();
+																																																																																										 st.pop();
+																																																																																										 if (c != '(')
+																																																																																											 ns += c;
+																																																																																									 }
+																																																																																									 cout << ns << endl;
+																																																																																								 } int main()
+																																																																																								 {
+																																																																																									 int t;
+																																																																																									 cin >> t;
+																																																																																									 cin.ignore();
+																																																																																									 while (t--)
+																																																																																									 {
+																																																																																										 string s;
+																																																																																										 cin >> s;
+																																																																																										 solve(s);
+																																																																																									 }
+																																																																																									 return 0;
+																																																																																								 }
 
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long ll;
+																																																																																								 BI
+																																																																																													 ? N
+																																																																																													 ? ? I H
+																																																																																													 ? U T
+																																																																																													 ? -TI
+																																																																																													 ? N T
+																																																																																													 ? BÔøΩi lÔøΩm t
+																																																																																													 ? t nh
+																																																																																													 ? t HÔøΩy vi
+																																																																																													 ? t ch
+																																																																																													 ? ? ng trÔøΩnh chuy
+																																																																																													 ? n
+																																																																																													 ? ? i bi
+																																																																																													 ? u th
+																																																																																													 ? c bi
+																																																																																													 ? u di
+																																																																																													 ? n d
+																																																																																													 ? ? i d
+																																																																																													 ? ng h
+																																																																																													 ? u t
+																																																																																													 ? v
+																																																																																													 ? d
+																																																																																													 ? ng ti
+																																																																																													 ? n t ?.Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																																																																													 ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c ti ? n t ? exp.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.RÔøΩng bu ? c : ? T, exp th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																																																								 2 ? length(exp) ? 106. VÔøΩÔøΩ d ?: Input Output 2 AB + CD - *ABC / -AK / L - **+AB - CD * -A / BC - / AKL
 
-main(){
-	int t;
-	cin >> t;
-	while(t--){
-		string s;
-		cin >> s;
-		stack<int> st;
-		string res = "";
-		for(int i = 0; i <= s.size(); i++){
-			st.push(i+1);
-			if(s[i] == 'I' || i == s.size()){
-				while(!st.empty()){
-					res += (st.top()+'0');
-				    st.pop();
-				}
-			}
-		}
-		cout << res << endl;
-	}
-}
+#include <bits/stdc++.h>
+																																																																																																																	  using namespace std;
+																																																																																								 bool isOperator(char c)
+																																																																																								 {
+																																																																																									 if (c == '*' || c == '/' || c == '+' || c == '-')
+																																																																																										 return true;
+																																																																																									 return false;
+																																																																																								 } void solve(string str)
+																																																																																								 {
+																																																																																									 stack<string> s;
+																																																																																									 for (int i = 0; i < str.length(); i++)
+																																																																																									 {
+																																																																																										 if (isOperator(str[i]))
+																																																																																										 {
+																																																																																											 string str1 = s.top();
+																																																																																											 s.pop();
+																																																																																											 string str2 = s.top();
+																																																																																											 s.pop();
+																																																																																											 string tmp = str[i] + str2 + str1;
+																																																																																											 s.push(tmp);
+																																																																																										 }
+																																																																																										 else
+																																																																																											 s.push(string(1, str[i]));
+																																																																																									 }
+																																																																																									 cout << s.top() << endl;
+																																																																																								 } int main()
+																																																																																								 {
+																																																																																									 int t;
+																																																																																									 cin >> t;
+																																																																																									 cin.ignore();
+																																																																																									 while (t--)
+																																																																																									 {
+																																																																																										 string s;
+																																																																																										 getline(cin, s);
+																																																																																										 solve(s);
+																																																																																									 }
+																																																																																								 }
 
-PH?N T? B N PH?I NH? H?N
-B‡i l‡m t?t nh?t
-Cho m?ng A[] g?m n ph?n t?. H„y ??a ra c·c ph?n t? nh? h?n ti?p theo c?a ph?n t? l?n h?n ??u tiÍn ph?n t? hi?n t?i. N?u ph?n t? hi?n t?i khÙng cÛ ph?n t? l?n h?n ti?p theo ta xem l‡ -1. N?u ph?n t? khÙng cÛ ph?n t? nh? h?n ti?p theo ta c?ng xem l‡ -1. VÌ d? v?i m?ng A[] = {5, 1, 9, 2, 5, 1, 7} ta cÛ k?t qu? l‡ ans = {2, 2, -1, 1, -1, -1, -1} vÏ:
-Next Greater†††††††††††††††††††††††† Right Smaller
-5††††††††† ->† 9††††††††††††††††††††††††††††††††††††††† 9† ->† 2
-1††††††††† ->† 9††††††††††††††††††††††††††††††††††††††† 9† ->† 2
-9††††††††† -> -1†††††††††††††††††††††††††††††††††††††† -1 -> -1
-2††††††††† -> 5†††††††††††††††††††††††††††††††††††††††† 5†† -> 1
-5††††††††† -> 7†††††††††††††††††††††††††††††††††††††††† 7† -> -1
-1††††††††† ->† 7††††††††††††††††††††††††††††††††††††††† 7 -> -1
-7††††††††† -> -1†††††††††††††††††††††††††††††††††††††† 7 -> -1
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test g?m hai dÚng: dÚng th? nh?t ??a v‡o n l‡ s? ph?n t? c?a m?ng A[], dÚng ti?p theo ??a v‡o n s? A[i].
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, n, A[i] th?a m„n r‡ng bu?c: 1?T?100; 1?n, A[i] ?106.
-VÌ d?:
-Input	Output
-2
-7
-5 1 9 2 5 1 7
-8
-4 8 2 1 9 5 6 3	2 2 1 1 -1 -1 -1
-2 5 5 5 -1 3 -1 -1
-†
+ÔøΩBI
+																																																																																													 ? N
+																																																																																													 ? ? I H
+																																																																																													 ? U T
+																																																																																													 ? -TI
+																																																																																													 ? N T
+																																																																																													 ? BÔøΩi lÔøΩm t
+																																																																																													 ? t nh
+																																																																																													 ? t HÔøΩy vi
+																																																																																													 ? t ch
+																																																																																													 ? ? ng trÔøΩnh chuy
+																																																																																													 ? n
+																																																																																													 ? ? i bi
+																																																																																													 ? u th
+																																																																																													 ? c bi
+																																																																																													 ? u di
+																																																																																													 ? n d
+																																																																																													 ? ? i d
+																																																																																													 ? ng h
+																																																																																													 ? u t
+																																																																																													 ? v
+																																																																																													 ? d
+																																																																																													 ? ng ti
+																																																																																													 ? n t ?.Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																																																																													 ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c ti ? n t ? exp.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.RÔøΩng bu ? c : ? T, exp th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																																																								 2 ? length(exp) ? 106. VÔøΩÔøΩ d ?: Input Output 2 AB + CD - *ABC / -AK / L - **+AB - CD * -A / BC - / AKL
 
-#include<bits/stdc++.h> 
-using namespace std; 
-void nextGreater(int arr[], int n, int next[], char order){
-    stack<int> S; 
-    for (int i=n-1; i>=0; i--){ 
-        while (!S.empty() && ((order=='G')? arr[S.top()] <= arr[i]: arr[S.top()] >= arr[i])) 
-            S.pop(); 
-        if (S.empty()) 
-            next[i] = -1; 
-        else
-            next[i] = S.top(); 
-        S.push(i); 
-    } 
-} 
-void solve(int arr[], int n) 
-{ 
-    int NG[n];  
-    int RS[n];
-    nextGreater(arr, n, NG, 'G'); 
-    nextGreater(arr, n, RS, 'S'); 
-    for (int i=0; i< n; i++){ 
-        if (NG[i] != -1 && RS[NG[i]] != -1) 
-            cout << arr[RS[NG[i]]] << " "; 
-        else
-            cout<<"-1"<<" "; 
-    } 
-    cout << endl;
-} 
-int main(){
-	int t; cin >> t ;
-	while (t--){
-		int n; cin >> n;
-		int *arr = new int[n];
-		for (int i = 0; i < n; i++) cin >> arr[i];
-		solve(arr, n);
-		delete arr;
-	}
-}
+#include <bits/stdc++.h>
+																																																																																																																	  using namespace std;
+																																																																																								 bool isOperator(char c)
+																																																																																								 {
+																																																																																									 if (c == '*' || c == '/' || c == '+' || c == '-')
+																																																																																										 return true;
+																																																																																									 return false;
+																																																																																								 } void solve(string str)
+																																																																																								 {
+																																																																																									 stack<string> s;
+																																																																																									 for (int i = 0; i < str.length(); i++)
+																																																																																									 {
+																																																																																										 if (isOperator(str[i]))
+																																																																																										 {
+																																																																																											 string str1 = s.top();
+																																																																																											 s.pop();
+																																																																																											 string str2 = s.top();
+																																																																																											 s.pop();
+																																																																																											 string tmp = str[i] + str2 + str1;
+																																																																																											 s.push(tmp);
+																																																																																										 }
+																																																																																										 else
+																																																																																											 s.push(string(1, str[i]));
+																																																																																									 }
+																																																																																									 cout << s.top() << endl;
+																																																																																								 } int main()
+																																																																																								 {
+																																																																																									 int t;
+																																																																																									 cin >> t;
+																																																																																									 cin.ignore();
+																																																																																									 while (t--)
+																																																																																									 {
+																																																																																										 string s;
+																																																																																										 getline(cin, s);
+																																																																																										 solve(s);
+																																																																																									 }
+																																																																																								 }
 
-GI?I M√ X¬U K› T?
-B‡i l‡m t?t nh?t
-Cho x‚u k˝ t? m„ hÛa str. H„y vi?t ch??ng trÏnh gi?i m„ x‚u k˝ t? str. X‚u k˝ t? m„ hÛa ???c th?c hi?n theo s? l?n l?p c·c x‚u con c?a str nh? sau:
-X‚u ??u v‡o: ìabbbababbbababbbab†î
-X‚u m„ hÛa : "3[a3[b]1[ab]]"
-Input:
-?	DÚng ??u tiÍn ??a v‡o s? l??ng b? test T;
-?	Nh?ng dÚng ti?p theo m?i dÚng ??a v‡o m?t b? test. M?i b? test l‡ m?t x‚u m„ hÛa str ???c vi?t trÍn m?t dÚng.
-Output:
-?	??a ra k?t qu? m?i test theo t?ng dÚng.
-R‡ng bu?c:
-?	T, str th?a m„n r‡ng bu?c: 1?T?100; 1?length(str)?100.
-VÌ d?:
-Input	Output
-2
-1[b]
-3[b2[ca]]	b
-bcacabcacabcaca
+																																																																																								 BI
+																																																																																													 ? N
+																																																																																													 ? ? I H
+																																																																																													 ? U T
+																																																																																													 ? -TRUNG T
+																																																																																													 ? BÔøΩi lÔøΩm t
+																																																																																													 ? t nh
+																																																																																													 ? t HÔøΩy vi
+																																																																																													 ? t ch
+																																																																																													 ? ? ng trÔøΩnh chuy
+																																																																																													 ? n
+																																																																																													 ? ? i bi
+																																																																																													 ? u th
+																																																																																													 ? c bi
+																																																																																													 ? u di
+																																																																																													 ? n d
+																																																																																													 ? ? i d
+																																																																																													 ? ng h
+																																																																																													 ? u t
+																																																																																													 ? v
+																																																																																													 ? d
+																																																																																													 ? ng trung t ?.Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																																																																													 ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t bi ? u th ? c ti ? n t ? exp.? T, exp th ? a mÔøΩng rÔøΩng bu ? c : 1 ? T ? 100;
+																																																																																								 2 ? length(exp) ? 106. Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.RÔøΩng bu ? c : ? T, exp th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100; 2 ? length(exp) ? 106. VÔøΩ d ?: Input Output 2 ABC++ AB * C + (
+																																																																																																																																												 A + (B + C)((A * B) + C)
 
-#include<bits/stdc++.h>
-using namespace std;
-void solve(string str){
-	stack<int> ig;
-	stack<char> sg;
-	string tmp = "", res = "";
-	for (int i = 0; i < str.length(); i++){
-		int num  = 0;
-		if (str[i] >= '0' && str[i] <= '9'){
-			while (str[i] >= '0' && str[i] <= '9'){
-				num  = num*10 + str[i] - '0';
-				i++;
-			}
-			i--;
-			ig.push(num);
-		}
-		else if (str[i] == ']'){
-			tmp = "";
-			num = 0;
-			if (!ig.empty()){
-				num = ig.top();
-				ig.pop();
-			}
-			while (!sg.empty() && sg.top() != '['){
-				tmp = sg.top() + tmp;
-				sg.pop();
-			}
-			if (!sg.empty() && sg.top() == '[')
-				sg.pop();
-			for (int j = 0; j < num; j++)
-				res = res + tmp;
-			for (int j = 0; j < res.length(); j++)
-				sg.push(res[j]);
-			res = "";
-		}
-		else if (str[i] == '['){
-			if (str[i-1] >= '0' && str[i-1] <= '9')
-				sg.push(str[i]);
-			else{
-				sg.push(str[i]);
-				ig.push(1);
-			}
-		}
-		else
-			sg.push(str[i]);
-	}
-	while (!sg.empty()){
-		res = sg.top() + res;
-		sg.pop();
-	}
-	cout << res << endl;
-}
-int main(){
-	int t; cin >> t;
-	while (t--){
-		string str; cin >> str;
-		solve(str);
-	}
-}
+#include <bits/stdc++.h>
+																																																																																																																																														 using namespace std;
+																																																																																																																																												 bool isOperator(char c)
+																																																																																																																																												 {
+																																																																																																																																													 if (c == '*' || c == '/' || c == '+' || c == '-')
+																																																																																																																																														 return true;
+																																																																																																																																													 return false;
+																																																																																																																																												 } void solve(string str)
+																																																																																																																																												 {
+																																																																																																																																													 stack<string> s;
+																																																																																																																																													 for (int i = 0; i < str.length(); i++)
+																																																																																																																																													 {
+																																																																																																																																														 if (isOperator(str[i]))
+																																																																																																																																														 {
+																																																																																																																																															 string str1 = s.top();
+																																																																																																																																															 s.pop();
+																																																																																																																																															 string str2 = s.top();
+																																																																																																																																															 s.pop();
+																																																																																																																																															 string tmp = "(" + str2 + str[i] + str1 + ")";
+																																																																																																																																															 s.push(tmp);
+																																																																																																																																														 }
+																																																																																																																																														 else
+																																																																																																																																															 s.push(string(1, str[i]));
+																																																																																																																																													 }
+																																																																																																																																													 cout << s.top() << endl;
+																																																																																																																																												 } int main()
+																																																																																																																																												 {
+																																																																																																																																													 int t;
+																																																																																																																																													 cin >> t;
+																																																																																																																																													 cin.ignore();
+																																																																																																																																													 while (t--)
+																																																																																																																																													 {
+																																																																																																																																														 string s;
+																																																																																																																																														 getline(cin, s);
+																																																																																																																																														 solve(s);
+																																																																																																																																													 }
+																																																																																																																																												 }
+
+																																																																																																																																												 BI
+																																																																																																																																																	 ? U TH
+																																																																																																																																																	 ? C T
+																																																																																																																																																	 ? NG GI
+																																																																																																																																																	 ? M BÔøΩi lÔøΩm t
+																																																																																																																																																	 ? t nh
+																																																																																																																																																	 ? t Cho dÔøΩy kÔøΩ t
+																																																																																																																																																	 ? S ch
+																																																																																																																																																	 ? bao g
+																																																																																																																																																	 ? m cÔøΩc kÔøΩ t
+																																																																																																																																																	 ? I ho
+																																																																																																																																																	 ? c D.KÔøΩ t
+																																																																																																																																																	 ? I
+																																																																																																																																																	 ? ? ? c hi
+																																																																																																																																																	 ? u lÔøΩ t
+																																																																																																																																																	 ? ng(Increasing) kÔøΩ t
+																																																																																																																																																	 ? D
+																																																																																																																																																	 ? ? ? c hi
+																																																																																																																																																	 ? u lÔøΩ gi
+																																																																																																																																																	 ? m(Decreasing).S
+																																																																																																																																																	 ? d
+																																																																																																																																																	 ? ng cÔøΩc s
+																																																																																																																																																	 ? t
+																																																																																																																																																	 ? 1
+																																																																																																																																																	 ?	 ? n 9,
+																																																																																																																																												 hÔøΩy ? ? a ra s ? nh ? nh ? t ? ? ? c ? oÔøΩn nh ? n t ? S.ChÔøΩ ÔøΩ, cÔøΩc s ? khÔøΩng ? ? ? c phÔøΩp l ? p l ? i.D ? ? i ?ÔøΩy lÔøΩ m ? t s ? vÔøΩ d ? m ? u : ? A[] = ÔøΩIÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+																																																																																																																																																																																				   : s
+																																																																																																																																																																																				   ? t
+																																																																																																																																																																																				   ? ng nh
+																																																																																																																																																																																				   ? nh
+																																																																																																																																																																																				   ? t lÔøΩ 12. ? A[] = ÔøΩDÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ : s ? gi ? m nh ? nh ? t lÔøΩ 21 ? A[] =ÔøΩDDÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ : s ? gi ? m nh ? nh ? t lÔøΩ 321 ? A[] = ÔøΩDDIDDIIDÔøΩ: s ? th ? a mÔøΩn 321654798 Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T.? Nh ? ng dÔøΩng k ? ti ? p ? ? a vÔøΩo T b ? test.M ? i b ? test lÔøΩ m ? t xÔøΩu S ? T,
+																																																																																																																																												 S th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																																																																																																												 1 ? length(S) ? 8;.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.VÔøΩ d ?: Input : Output : 4 I D DD DDIDDIID 12 21 321 321654798
+
+#include <bits/stdc++.h>
+																																																																																																																																																									   using namespace std;
+																																																																																																																																												 typedef long long ll;
+
+																																																																																																																																												 main()
+																																																																																																																																												 {
+																																																																																																																																													 int t;
+																																																																																																																																													 cin >> t;
+																																																																																																																																													 while (t--)
+																																																																																																																																													 {
+																																																																																																																																														 string s;
+																																																																																																																																														 cin >> s;
+																																																																																																																																														 stack<int> st;
+																																																																																																																																														 string res = "";
+																																																																																																																																														 for (int i = 0; i <= s.size(); i++)
+																																																																																																																																														 {
+																																																																																																																																															 st.push(i + 1);
+																																																																																																																																															 if (s[i] == 'I' || i == s.size())
+																																																																																																																																															 {
+																																																																																																																																																 while (!st.empty())
+																																																																																																																																																 {
+																																																																																																																																																	 res += (st.top() + '0');
+																																																																																																																																																	 st.pop();
+																																																																																																																																																 }
+																																																																																																																																															 }
+																																																																																																																																														 }
+																																																																																																																																														 cout << res << endl;
+																																																																																																																																													 }
+																																																																																																																																												 }
+
+																																																																																																																																												 PH
+																																																																																																																																																	 ? N T
+																																																																																																																																																	 ? BÔøΩN PH
+																																																																																																																																																	 ? I NH
+																																																																																																																																																	 ? H
+																																																																																																																																																	 ? N BÔøΩi lÔøΩm t
+																																																																																																																																																	 ? t nh
+																																																																																																																																																	 ? t Cho m
+																																																																																																																																																	 ? ng A[] g
+																																																																																																																																																	 ? m n ph
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ?.HÔøΩy
+																																																																																																																																																	 ? ? a ra cÔøΩc ph
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? nh
+																																																																																																																																																	 ? h
+																																																																																																																																																	 ? n ti
+																																																																																																																																																	 ? p theo c
+																																																																																																																																																	 ? a ph
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? l
+																																																																																																																																																	 ? n h
+																																																																																																																																																	 ? n
+																																																																																																																																																	 ? ? u tiÔøΩn ph
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? hi
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? i.N
+																																																																																																																																																	 ? u ph
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? hi
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? i khÔøΩng cÔøΩ ph
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? l
+																																																																																																																																																	 ? n h
+																																																																																																																																																	 ? n ti
+																																																																																																																																																	 ? p theo ta xem lÔøΩ - 1. N
+																																																																																																																																																	 ? u ph
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? khÔøΩng cÔøΩ ph
+																																																																																																																																																	 ? n t
+																																																																																																																																																	 ? nh
+																																																																																																																																																	 ? h
+																																																																																																																																																	 ? n ti
+																																																																																																																																																	 ? p theo ta c
+																																																																																																																																																	 ? ng xem lÔøΩ - 1. VÔøΩ d
+																																																																																																																																																	 ? v
+																																																																																																																																																	 ? i m
+																																																																																																																																																	 ? ng A[] = {5, 1, 9, 2, 5, 1, 7} ta cÔøΩ k ? t qu ? lÔøΩ ans = {2, 2, -1, 1, -1, -1, -1} vÔøΩ: Next GreaterÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ Right Smaller 5ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ->ÔøΩ 9ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ 9ÔøΩ ->ÔøΩ 2 1ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ->ÔøΩ 9ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ 9ÔøΩ ->ÔøΩ 2 9ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ->- 1ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ - 1->- 1 2ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ->5ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ 5ÔøΩÔøΩ ->1 5ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ->7ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ 7ÔøΩ ->- 1 1ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ->ÔøΩ 7ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ 7->- 1 7ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ->- 1ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ 7->- 1 Input : ? DÔøΩng ? ? u tiÔøΩn ? ? a vÔøΩo s ? l ? ? ng b ? test T;
+																																																																																																																																																	 ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test g ? m hai dÔøΩng : dÔøΩng th ? nh ? t ? ? a vÔøΩo n lÔøΩ s ? ph ? n t ? c ? a m ? ng A[], dÔøΩng ti ? p theo ? ? a vÔøΩo n s ? A[i].Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.RÔøΩng bu ? c : ? T, n, A[i] th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																																																																																																												 1 ? n, A[i] ? 106. VÔøΩ d ?: Input Output 2 7 5 1 9 2 5 1 7 8 4 8 2 1 9 5 6 3 2 2 1 1 - 1 - 1 - 1 2 5 5 5 - 1 3 - 1 - 1
+ÔøΩ
+
+#include <bits/stdc++.h>
+																																																																																																																																																				using namespace std;
+																																																																																																																																												 void nextGreater(int arr[], int n, int next[], char order)
+																																																																																																																																												 {
+																																																																																																																																													 stack<int> S;
+																																																																																																																																													 for (int i = n - 1; i >= 0; i--)
+																																																																																																																																													 {
+																																																																																																																																														 while (!S.empty() && ((order == 'G') ? arr[S.top()] <= arr[i] : arr[S.top()] >= arr[i]))
+																																																																																																																																															 S.pop();
+																																																																																																																																														 if (S.empty())
+																																																																																																																																															 next[i] = -1;
+																																																																																																																																														 else
+																																																																																																																																															 next[i] = S.top();
+																																																																																																																																														 S.push(i);
+																																																																																																																																													 }
+																																																																																																																																												 } void solve(int arr[], int n)
+																																																																																																																																												 {
+																																																																																																																																													 int NG[n];
+																																																																																																																																													 int RS[n];
+																																																																																																																																													 nextGreater(arr, n, NG, 'G');
+																																																																																																																																													 nextGreater(arr, n, RS, 'S');
+																																																																																																																																													 for (int i = 0; i < n; i++)
+																																																																																																																																													 {
+																																																																																																																																														 if (NG[i] != -1 && RS[NG[i]] != -1)
+																																																																																																																																															 cout << arr[RS[NG[i]]] << " ";
+																																																																																																																																														 else
+																																																																																																																																															 cout << "-1"
+																																																																																																																																																  << " ";
+																																																																																																																																													 }
+																																																																																																																																													 cout << endl;
+																																																																																																																																												 } int main()
+																																																																																																																																												 {
+																																																																																																																																													 int t;
+																																																																																																																																													 cin >> t;
+																																																																																																																																													 while (t--)
+																																																																																																																																													 {
+																																																																																																																																														 int n;
+																																																																																																																																														 cin >> n;
+																																																																																																																																														 int *arr = new int[n];
+																																																																																																																																														 for (int i = 0; i < n; i++)
+																																																																																																																																															 cin >> arr[i];
+																																																																																																																																														 solve(arr, n);
+																																																																																																																																														 delete arr;
+																																																																																																																																													 }
+																																																																																																																																												 }
+
+																																																																																																																																												 GI
+																																																																																																																																																	 ? I MÔøΩ XÔøΩU KÔøΩ T
+																																																																																																																																																	 ? BÔøΩi lÔøΩm t
+																																																																																																																																																	 ? t nh
+																																																																																																																																																	 ? t Cho xÔøΩu kÔøΩ t
+																																																																																																																																																	 ? mÔøΩ hÔøΩa str.HÔøΩy vi
+																																																																																																																																																	 ? t ch
+																																																																																																																																																	 ? ? ng trÔøΩnh gi
+																																																																																																																																																	 ? i mÔøΩ xÔøΩu kÔøΩ t
+																																																																																																																																																	 ? str.XÔøΩu kÔøΩ t
+																																																																																																																																																	 ? mÔøΩ hÔøΩa
+																																																																																																																																																	 ? ? ? c th
+																																																																																																																																																	 ? c hi
+																																																																																																																																																	 ? n theo s
+																																																																																																																																																	 ? l
+																																																																																																																																																	 ? n l
+																																																																																																																																																	 ? p cÔøΩc xÔøΩu con c ? a str nh ? sau : XÔøΩu	? ? u vÔøΩo : ÔøΩabbbababbbababbbabÔøΩÔøΩ XÔøΩu mÔøΩ hÔøΩa
+																																																																																																																																																												: "3[a3[b]1[ab]]" Input
+																																																																																																																																																					   :
+																																																																																																																																																					   ? DÔøΩng
+																																																																																																																																																		   ? ? u tiÔøΩn
+																																																																																																																																																		   ? ? a vÔøΩo s
+																																																																																																																																																		   ? l
+																																																																																																																																																		   ? ? ng b
+																																																																																																																																																		   ? test T;
+																																																																																																																																																	 ? Nh ? ng dÔøΩng ti ? p theo m ? i dÔøΩng ? ? a vÔøΩo m ? t b ? test.M ? i b ? test lÔøΩ m ? t xÔøΩu mÔøΩ hÔøΩa str ? ? ? c vi ? t trÔøΩn m ? t dÔøΩng.Output : ? ? ? a ra k ? t qu ? m ? i test theo t ? ng dÔøΩng.RÔøΩng bu ? c : ? T, str th ? a mÔøΩn rÔøΩng bu ? c : 1 ? T ? 100;
+																																																																																																																																												 1 ? length(str) ? 100. VÔøΩ d ?: Input Output 2 1 [b] 3 [b2[ca]] b bcacabcacabcaca
+
+#include <bits/stdc++.h>
+																																																																																																																																																	   using namespace std;
+																																																																																																																																												 void solve(string str)
+																																																																																																																																												 {
+																																																																																																																																													 stack<int> ig;
+																																																																																																																																													 stack<char> sg;
+																																																																																																																																													 string tmp = "", res = "";
+																																																																																																																																													 for (int i = 0; i < str.length(); i++)
+																																																																																																																																													 {
+																																																																																																																																														 int num = 0;
+																																																																																																																																														 if (str[i] >= '0' && str[i] <= '9')
+																																																																																																																																														 {
+																																																																																																																																															 while (str[i] >= '0' && str[i] <= '9')
+																																																																																																																																															 {
+																																																																																																																																																 num = num * 10 + str[i] - '0';
+																																																																																																																																																 i++;
+																																																																																																																																															 }
+																																																																																																																																															 i--;
+																																																																																																																																															 ig.push(num);
+																																																																																																																																														 }
+																																																																																																																																														 else if (str[i] == ']')
+																																																																																																																																														 {
+																																																																																																																																															 tmp = "";
+																																																																																																																																															 num = 0;
+																																																																																																																																															 if (!ig.empty())
+																																																																																																																																															 {
+																																																																																																																																																 num = ig.top();
+																																																																																																																																																 ig.pop();
+																																																																																																																																															 }
+																																																																																																																																															 while (!sg.empty() && sg.top() != '[')
+																																																																																																																																															 {
+																																																																																																																																																 tmp = sg.top() + tmp;
+																																																																																																																																																 sg.pop();
+																																																																																																																																															 }
+																																																																																																																																															 if (!sg.empty() && sg.top() == '[')
+																																																																																																																																																 sg.pop();
+																																																																																																																																															 for (int j = 0; j < num; j++)
+																																																																																																																																																 res = res + tmp;
+																																																																																																																																															 for (int j = 0; j < res.length(); j++)
+																																																																																																																																																 sg.push(res[j]);
+																																																																																																																																															 res = "";
+																																																																																																																																														 }
+																																																																																																																																														 else if (str[i] == '[')
+																																																																																																																																														 {
+																																																																																																																																															 if (str[i - 1] >= '0' && str[i - 1] <= '9')
+																																																																																																																																																 sg.push(str[i]);
+																																																																																																																																															 else
+																																																																																																																																															 {
+																																																																																																																																																 sg.push(str[i]);
+																																																																																																																																																 ig.push(1);
+																																																																																																																																															 }
+																																																																																																																																														 }
+																																																																																																																																														 else
+																																																																																																																																															 sg.push(str[i]);
+																																																																																																																																													 }
+																																																																																																																																													 while (!sg.empty())
+																																																																																																																																													 {
+																																																																																																																																														 res = sg.top() + res;
+																																																																																																																																														 sg.pop();
+																																																																																																																																													 }
+																																																																																																																																													 cout << res << endl;
+																																																																																																																																												 } int main()
+																																																																																																																																												 {
+																																																																																																																																													 int t;
+																																																																																																																																													 cin >> t;
+																																																																																																																																													 while (t--)
+																																																																																																																																													 {
+																																																																																																																																														 string str;
+																																																																																																																																														 cin >> str;
+																																																																																																																																														 solve(str);
+																																																																																																																																													 }
+																																																																																																																																												 }
