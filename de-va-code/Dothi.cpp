@@ -1444,6 +1444,65 @@ int main(){
 	}
 }
 
+ KI?M TRA CHU TRÌNH TRÊN ?? TH? CÓ H??NG
+Bài làm t?t nh?t
+Cho ?? th? có h??ng G=<V, E> ???c bi?u di?n d??i d?ng danh sách c?nh. Hãy ki?m tra xem ?? th? có t?n t?i chu trình hay không?
+Input:
+?	Dòng ??u tiên ??a vào T là s? l??ng b? test.
+?	Nh?ng dòng ti?p theo ??a vào các b? test. M?i b? test g?m 2 dòng: dòng ??u tiên ??a vào hai s? |V|, |E| t??ng ?ng v?i s? ??nh,  s? c?nh c?a ?? th?; Dòng ti?p theo ??a vào các b? ?ôi u, v t??ng ?ng v?i m?t c?nh c?a ?? th?.
+?	T, |V|, |E| th?a mãn ràng bu?c: 1?T?100; 1?|V|?103; 1?|E|?|V|(|V|-1)/2;
+Output:
+?	??a ra YES ho?c “NO” k?t qu? test theo t?ng dòng t??ng ?ng v?i ?? th? t?n t?i ho?c không t?n t?i chu trình.
+     Ví d?:
+Input:	Output:
+1
+6 9  
+1 2 2 4 3 1 3 2 3 5 4 3 5 4 5 6 6 4	YES
+ 
+#include<bits/stdc++.h>
+using namespace std;
+int n, m;
+bool used[1005];
+bool recStack[1005];
+vector<int> vt[1005];
+bool isCycle(int u){
+	if (!used[u]){
+		used[u] = true;
+		recStack[u] = true;
+		for (int i=0; i<vt[u].size(); i++){
+			if (!used[vt[u][i]] && isCycle(vt[u][i]))
+				return true;
+			else if(recStack[vt[u][i]])
+				return true;
+		}
+	}
+	recStack[u] = false;
+	return false;
+}
+bool check(){
+	for(int i=1; i<=n; i++) 
+        if (isCycle(i)) 
+            return true; 
+    return false; 
+}
+int main(){
+	int T; cin >> T;
+	while (T--){
+		cin >> n >> m;
+		for (int i=0; i<1005; i++)
+			vt[i].clear();
+		for (int i=1; i<=m; i++){
+			int x, y; cin >> x >> y;
+			vt[x].push_back(y);
+		}
+		memset(used, false, sizeof(used));
+		memset(recStack, false, sizeof(recStack));
+		if (check()) cout << "YES";
+		else cout << "NO";
+		cout << endl;
+	}
+}
+
 KI?M TRA ?? TH? CÓ PH?I LÀ CÂY HAY KHÔNG
 Bài làm t?t nh?t
 M?t ?? th? N ??nh là m?t cây, n?u nh? nó có ?úng N-1 c?nh và gi?a 2 ??nh b?t kì, ch? t?n t?i duy nh?t 1 ???ng ?i gi?a chúng.
